@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $casts = [
-        'detail' => 'array',
+        'task' => 'array',
     ];
 }

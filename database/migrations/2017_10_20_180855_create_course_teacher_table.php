@@ -26,7 +26,7 @@ class CreateCourseTeacherTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('teacher_id')
-                ->references('user_id')->on('teachers')
+                ->references('id')->on('teachers')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

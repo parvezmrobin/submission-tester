@@ -17,7 +17,7 @@ class CreateSubmissionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('task_id');
             $table->text('submission');
-            $table->string('student_id', 15);
+            $table->unsignedInteger('student_id');
             $table->tinyInteger('status');
             $table->timestamps();
 
@@ -26,7 +26,7 @@ class CreateSubmissionsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('student_id')
-                ->references('id')->on('students')
+                ->references('id')->on('course_student')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

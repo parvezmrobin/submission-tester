@@ -15,14 +15,14 @@ class CreateCourseStudentTable extends Migration
     {
         Schema::create('course_student', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('courser_id');
-            $table->string('student_id', 15);
-            $table->boolean('is_approved')->default('0');
+            $table->unsignedInteger('course_id');
+            $table->unsignedInteger('student_id');
+            $table->timestamp('approved_at')->nullable();
             $table->timestamps();
 
-            $table->unique(['courser_id', 'student_id']);
+            $table->unique(['course_id', 'student_id']);
 
-            $table->foreign('courser_id')
+            $table->foreign('course_id')
                 ->references('id')->on('course_session')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
