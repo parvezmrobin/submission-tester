@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Route::get('/manifest.json')
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get("/task/compare/{submission1}/{submission2}", "SubmissionController@compareSubmissions");

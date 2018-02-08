@@ -10,7 +10,6 @@ class SubmissionController extends Controller
     public function compareSubmissions(Submission $submission1, Submission $submission2)
     {
         $str1 = $submission1->submission["body"];
-//        $str1 = htmlentities($str1);
         $str2 = $submission2->submission["body"];
         $m = strlen($str1);
         $n = strlen($str2);
@@ -35,17 +34,13 @@ class SubmissionController extends Controller
             if ($value) {
                 $first = substr($str2, 0, $i + $offset - 1);
                 $second = substr($str2, $i + $offset - 1, 1);
+
                 $third = substr($str2, $i + $offset);
                 $str2 = $first . '<span class="added">' . $second . '</span>' . $third;
                 $offset += 27;
             }
         }
-//
-//        $submission1->submission["body"] = $str1;
-//        $submission2->submission["body"] = $str2;
 
-        $str1 = nl2br($str1);
-        $str2 = nl2br($str2);
         return view('submission.test')->with('str1', $str1)
             ->with('str2', $str2);
     }
